@@ -99,7 +99,7 @@ public class AbstractCompilerTest extends TestCase {
 		new int[] {F_20, ClassFileConstants.MAJOR_VERSION_20},
 		new int[] {F_21, ClassFileConstants.MAJOR_VERSION_21},
 		new int[] {F_22, ClassFileConstants.MAJOR_VERSION_22},
-		new int[] {F_23, ClassFileConstants.MAJOR_VERSION_23},
+		new int[] {F_23, ClassFileConstants.MAJOR_VERSION_23}
 	};
 
 	/**
