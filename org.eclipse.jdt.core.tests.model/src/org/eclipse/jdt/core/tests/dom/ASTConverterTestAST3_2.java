@@ -2819,7 +2819,7 @@ public class ASTConverterTestAST3_2 extends ConverterTestSetup {
 			CompilationUnit result = (CompilationUnit)runConversion(getJLS3(), sourceUnit, true);
 			IProblem[] problems= result.getProblems();
 			assertTrue(problems.length == 1);
-			assertEquals("Invalid warning", "Javadoc: Missing tag for parameter a", problems[0].getMessage());
+			assertProblemsSize(result, 1, "Javadoc: Missing tag for parameter a");
 		} finally {
 			project.setOptions(originalOptions);
 		}
