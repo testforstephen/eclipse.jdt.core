@@ -197,6 +197,10 @@ public class DOMCodeSelector {
 				return reorderedOverloadedMethods;
 			}
 			return new IJavaElement[] { importBinding.getJavaElement() };
+		} else if (node instanceof MethodDeclaration decl && offset > decl.getName().getStartPosition()) {
+			// most likely inside and empty `()`
+			// case for TypeHierarchyCommandTest.testTypeHierarchy()
+			return null;
 		} else if (findTypeDeclaration(node) == null) {
 			IBinding binding = resolveBinding(node);
 			if (binding != null && !binding.isRecovered()) {
