@@ -172,6 +172,10 @@ protected boolean buildStructure(OpenableElementInfo info, final IProgressMonito
 		ASTNode dom = null;
 		try {
 			dom = astParser.createAST(pm);
+			if (computeProblems) {
+				// force resolution of bindings to load more problems
+				dom.getAST().resolveWellKnownType(Object.class.getName());
+			}
 		} catch (AbortCompilationUnit e) {
 			var problem = e.problem;
 			if (problem == null && e.exception instanceof IOException ioEx) {
