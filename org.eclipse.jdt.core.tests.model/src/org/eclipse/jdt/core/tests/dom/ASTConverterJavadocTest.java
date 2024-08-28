@@ -2170,12 +2170,14 @@ public class ASTConverterJavadocTest extends ConverterTestSetup {
 	 * @see "http://bugs.eclipse.org/bugs/show_bug.cgi?id=70892"
 	 * @deprecated using deprecated code
 	 */
+	@JavacTestIgnore(cause=JavacTestIgnore.JDT_RECOVERS_FROM_BAD_INPUTS)
 	public void testBug70892_JLS2() throws JavaModelException {
 		int level = this.astLevel;
 		this.astLevel = AST.JLS2;
 		verifyComments("testBug70892");
 		this.astLevel = level;
 	}
+	@JavacTestIgnore(cause=JavacTestIgnore.JDT_RECOVERS_FROM_BAD_INPUTS)
 	public void testBug70892_JLS3() throws JavaModelException {
 		int level = this.astLevel;
 		this.astLevel = getJLS3();
@@ -2274,6 +2276,8 @@ public class ASTConverterJavadocTest extends ConverterTestSetup {
 	 * Bug 80221: [1.5][dom][javadoc] Need better support for type parameter Javadoc tags
 	 * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=80221"
 	 */
+	// Resolving "Object" should not be controversial since it is a well known type
+	@JavacTestIgnore(cause=JavacTestIgnore.VALID_ALTERNATIVE_IMPL)
 	public void testBug80221() throws JavaModelException {
 		this.workingCopies = new ICompilationUnit[1];
 		this.astLevel = getJLS3();
