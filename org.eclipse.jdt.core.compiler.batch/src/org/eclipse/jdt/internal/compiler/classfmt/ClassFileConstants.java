@@ -142,8 +142,7 @@ public interface ClassFileConstants {
 	int MAJOR_VERSION_23 = 67;
 
 	int MAJOR_VERSION_0 = 44;
-	// Latest version supported by ECJ (not necessarily latest known Java version)
-	int MAJOR_LATEST_VERSION = MAJOR_VERSION_22;
+	int MAJOR_LATEST_VERSION = MAJOR_VERSION_23;
 
 	int MINOR_VERSION_0 = 0;
 	int MINOR_VERSION_1 = 1;
