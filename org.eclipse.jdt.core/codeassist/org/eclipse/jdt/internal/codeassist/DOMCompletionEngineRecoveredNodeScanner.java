@@ -7,7 +7,7 @@
  * https://www.eclipse.org/legal/epl-2.0/
  *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
  *     Gayan Perera - initial API and implementation
  *******************************************************************************/
@@ -32,7 +32,6 @@ import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.QualifiedName;
 import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.SimpleType;
-import org.eclipse.jdt.core.dom.StringTemplateExpression;
 import org.eclipse.jdt.core.search.IJavaSearchConstants;
 import org.eclipse.jdt.core.search.SearchEngine;
 import org.eclipse.jdt.core.search.SearchPattern;
@@ -99,18 +98,6 @@ final class DOMCompletionEngineRecoveredNodeScanner {
         }
 
         @Override
-        public boolean visit(StringTemplateExpression node) {
-            // statement such as 'System.out.println("hello" + Thread.currentThread().)' are identified as a
-            // StringFragment part of StringTemplateExpression, the invocation which we are interested might be in the
-            // the processor of the expression
-            this.foundBinding = node.getProcessor().resolveTypeBinding();
-            if (this.foundBinding != null) {
-                return false;
-            }
-            return super.visit(node);
-        }
-
-        @Override
         public boolean visit(SimpleType node) {
             // this is part of a statement that is recovered due to syntax errors, so first check if the type is a
             // actual recoverable type, if not treat the type name as a variable name and search for such variable in
@@ -119,7 +106,7 @@ final class DOMCompletionEngineRecoveredNodeScanner {
             if(binding == null) {
                 return super.visit(node);
             }
-            
+
             if (!binding.isRecovered()) {
                 this.foundBinding = binding;
                 return false;
