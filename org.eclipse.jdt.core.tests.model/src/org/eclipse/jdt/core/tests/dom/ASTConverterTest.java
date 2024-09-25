@@ -1073,6 +1073,8 @@ public class ASTConverterTest extends ConverterTestSetup {
 	/**
 	 * IntLiteralMinValue ==> NumberLiteral
 	 */
+	@Category(Ignore.class)
+	@JavacFailReason(cause=JavacFailReason.VALID_ALTERNATIVE_IMPL)
 	public void test0049() throws JavaModelException {
 		ICompilationUnit sourceUnit = getCompilationUnit("Converter" , "src", "test0049", "Test.java"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 		char[] source = sourceUnit.getSource().toCharArray();
@@ -1101,6 +1103,8 @@ public class ASTConverterTest extends ConverterTestSetup {
 	/**
 	 * LongLiteral ==> NumberLiteral (negative value)
 	 */
+	@Category(Ignore.class)
+	@JavacFailReason(cause=JavacFailReason.VALID_ALTERNATIVE_IMPL)
 	public void test0051() throws JavaModelException {
 		ICompilationUnit sourceUnit = getCompilationUnit("Converter" , "src", "test0051", "Test.java"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 		char[] source = sourceUnit.getSource().toCharArray();
@@ -1118,6 +1122,8 @@ public class ASTConverterTest extends ConverterTestSetup {
 	/**
 	 * LongLiteralMinValue ==> NumberLiteral
 	 */
+	@Category(Ignore.class)
+	@JavacFailReason(cause=JavacFailReason.VALID_ALTERNATIVE_IMPL)
 	public void test0052() throws JavaModelException {
 		ICompilationUnit sourceUnit = getCompilationUnit("Converter" , "src", "test0052", "Test.java"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 		char[] source = sourceUnit.getSource().toCharArray();
