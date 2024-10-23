@@ -481,8 +481,9 @@ public org.eclipse.jdt.core.dom.CompilationUnit getOrBuildAST(WorkingCopyOwner w
 		return this.ast;
 	}
 	Map<String, String> options = getOptions(true);
-	int jlsLevel = Integer.parseInt(options.getOrDefault(JavaCore.COMPILER_SOURCE, Integer.toString(AST.getJLSLatest())));
-	ASTParser parser = ASTParser.newParser(jlsLevel);
+	ASTParser parser = ASTParser.newParser(new AST(options).apiLevel()); // go through AST constructor to convert options to apiLevel
+	// but we should probably instead just use the latest Java version
+	// supported by the compiler
 	parser.setWorkingCopyOwner(workingCopyOwner);
 	parser.setSource(this);
 	// greedily enable everything assuming the AST will be used extensively for edition
