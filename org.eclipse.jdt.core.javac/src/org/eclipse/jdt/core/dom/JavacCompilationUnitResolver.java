@@ -564,7 +564,7 @@ public class JavacCompilationUnitResolver implements ICompilationUnitResolver {
 			return Collections.emptyMap();
 		}
 
-		JavacPatch.loadVMWrapperPatch();
+		org.eclipse.jdt.core.javacapi.JavacPatch.loadVMWrapperPatch();
 		var compiler = ToolProvider.getSystemJavaCompiler();
 		Context context = new Context();
 		CachingJarsJavaFileManager.preRegister(context);
